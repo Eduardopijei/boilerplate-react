@@ -1,53 +1,215 @@
-// import { Theme as MuiTheme, ThemeOptions as MuiThemeOptions } from "@mui/material";
+import { Theme, ThemeOptions } from '@mui/material/styles';
+import {ComponentsOverrides} from '@mui/material/styles/overrides';
 
-// declare module '@mui/material/styles' {
-//   interface Theme extends MuiTheme {
-//     palette: {
-//       primary: {
-//         main: string,
-//         light: string,
-//         dark: string
-//       },
-//       secondary: {
-//         main: string,
-//         light: string,
-//         dark: string
-//       }
-//     }
-//   }
-//   interface ThemeOptions extends MuiThemeOptions {
-//     palette?: {
-//       primary?: {
-//         main?: string,
-//         light?: string,
-//         dark?: string
-//       },
-//       secondary?: {
-//         main?: string,
-//         light?: string,
-//         dark?: string
-//       }
-//     }
-//   }
-//   export function createTheme(options?: ThemeOptions): Theme
-// }
-import { Theme } from "@material-ui/core/styles/createMuiTheme";
-import { createMuiTheme } from "@material-ui/core/styles";
-
-declare module "@material-ui/styles" {
-  interface DefaultTheme extends MyTheme {}
+declare module '@mui/material/styles' {
+  interface CustomTheme extends Theme {
+    status: {
+      danger: string;
+    };
+  }
+  // allow configuration using `createTheme`
+  interface CustomThemeOptions extends ThemeOptions {
+    status?: {
+      danger?: string;
+    };
+  }
+  export function createTheme(options?: CustomThemeOptions): CustomTheme;
 }
 
-declare module "@material-ui/core/styles/createMuiTheme" {
-  interface ThemeOptions extends MyTheme {}
+declare module '@mui/material/styles' {
+  interface Components {
+      MUIDataTable?: {
+          styleOverrides?: ComponentsOverrides['MUIDataTable'];
+      };
+      
+      MUIDataTableBody?: {
+          styleOverrides?: ComponentsOverrides['MUIDataTableBody'];
+      };
+
+      MUIDataTableBodyCell?: {
+          styleOverrides?: ComponentsOverrides['MUIDataTableBodyCell'];
+      };
+
+      MUIDataTableBodyRow?: {
+          styleOverrides?: ComponentsOverrides['MUIDataTableBodyRow'];
+      };
+
+      MUIDataTableFilter?: {
+          styleOverrides?: ComponentsOverrides['MUIDataTableFilter'];
+      };
+
+      MUIDataTableFilterList?: {
+          styleOverrides?: ComponentsOverrides['MUIDataTableFilterList'];
+      };
+
+      MUIDataTableFooter?: {
+          styleOverrides?: ComponentsOverrides['MUIDataTableFooter'];
+      };
+
+      MUIDataTableHead?: {
+          styleOverrides?: ComponentsOverrides['MUIDataTableHead'];
+      };
+
+      MUIDataTableHeadCell?: {
+          styleOverrides?: ComponentsOverrides['MUIDataTableHeadCell'];
+      };
+
+      MUIDataTableHeadRow?: {
+          styleOverrides?: ComponentsOverrides['MUIDataTableHeadRow'];
+      };
+
+      MUIDataTableJumpToPage?: {
+          styleOverrides?: ComponentsOverrides['MUIDataTableJumpToPage'];
+      };
+
+      MUIDataTablePagination?: {
+          styleOverrides?: ComponentsOverrides['MUIDataTablePagination'];
+      };
+
+      MUIDataTableResize?: {
+          styleOverrides?: ComponentsOverrides['MUIDataTableResize'];
+      };
+
+      MUIDataTableSearch?: {
+          styleOverrides?: ComponentsOverrides['MUIDataTableSearch'];
+      };
+
+      MUIDataTableSelectCell?: {
+          styleOverrides?: ComponentsOverrides['MUIDataTableSelectCell'];
+      };
+
+      MUIDataTableToolbar?: {
+          styleOverrides?: ComponentsOverrides['MUIDataTableToolbar'];
+      };
+
+      MUIDataTableToolbarSelect?: {
+          styleOverrides?: ComponentsOverrides['MUIDataTableToolbarSelect'];
+      };
+
+      MUIDataTableViewCol?: {
+          styleOverrides?: ComponentsOverrides['MUIDataTableViewCol'];
+      };
+  }
 }
 
-export interface MyTheme extends Theme {
-  backgroundColor: string;
+declare module '@mui/material/styles/overrides' {
+  interface ComponentNameToClassKey {
+      MUIDataTable: 'root' | 'caption' | 'liveAnnounce' | 'paper' | 'responsiveScroll' | 'tableRoot';
+
+      MUIDataTableBody: 'root' | 'emptyTitle' | 'lastSimpleCell' | 'lastStackedCell';
+
+      MUIDataTableBodyCell:
+          | 'root'
+          | 'cellHide'
+          | 'cellStackedSmall'
+          | 'responsiveStackedSmall'
+          | 'responsiveStackedSmallParent'
+          | 'simpleCell'
+          | 'simpleHeader'
+          | 'stackedCommon'
+          | 'stackedCommonAlways'
+          | 'stackedHeader'
+          | 'stackedParent'
+          | 'stackedParentAlways';
+
+      MUIDataTableBodyRow: 'root' | 'hoverCursor' | 'responsiveSimple' | 'responsiveStacked';
+
+      MUIDataTableFilter:
+          | 'root'
+          | 'checkbox'
+          | 'checkboxFormControl'
+          | 'checkboxFormControlLabel'
+          | 'checkboxFormGroup'
+          | 'checkboxIcon'
+          | 'checkboxListTitle'
+          | 'checked'
+          | 'filtersSelected'
+          | 'gridListTile'
+          | 'header'
+          | 'noMargin'
+          | 'reset'
+          | 'resetLink'
+          | 'title';
+
+      MUIDataTableFilterList: 'root' | 'chip';
+
+      MUIDataTableFooter: 'root';
+
+      MUIDataTableHead: 'main' | 'responsiveSimple' | 'responsiveStacked' | 'responsiveStackedAlways';
+
+      MUIDataTableHeadCell:
+          | 'root'
+          | 'contentWrapper'
+          | 'data'
+          | 'dragCursor'
+          | 'fixedHeader'
+          | 'hintIconAlone'
+          | 'hintIconWithSortIcon'
+          | 'mypopper'
+          | 'sortAction'
+          | 'sortActive'
+          | 'sortLabelRoot'
+          | 'toolButton'
+          | 'tooltip';
+
+      MUIDataTableHeadRow: 'root';
+
+      MUIDataTableJumpToPage: 'root' | 'caption' | 'input' | 'select' | 'selectIcon' | 'selectRoot';
+
+      MUIDataTablePagination:
+          | 'root'
+          | '@media screen and (max-width: 400px)'
+          | 'navContainer'
+          | 'selectRoot'
+          | 'tableCellContainer'
+          | 'toolbar';
+
+      MUIDataTableResize: 'root' | 'resizer';
+
+      MUIDataTableSearch: 'clearIcon' | 'main' | 'searchIcon' | 'searchText';
+
+      MUIDataTableSelectCell:
+          | 'root'
+          | 'checkboxRoot'
+          | 'checked'
+          | 'disabled'
+          | 'expandDisabled'
+          | 'expanded'
+          | 'fixedHeader'
+          | 'fixedLeft'
+          | 'headerCell'
+          | 'hide'
+          | 'icon';
+
+      MUIDataTableToolbar:
+          | 'root'
+          | '@media screen and (max-width: 480px)'
+          | "[theme.breakpoints.down('sm')]"
+          | "[theme.breakpoints.down('xs')]"
+          | 'actions'
+          | 'filterCloseIcon'
+          | 'filterPaper'
+          | 'fullWidthActions'
+          | 'fullWidthLeft'
+          | 'fullWidthRoot'
+          | 'fullWidthTitleText'
+          | 'icon'
+          | 'iconActive'
+          | 'left'
+          | 'searchIcon'
+          | 'titleRoot'
+          | 'titleText';
+
+      MUIDataTableToolbarSelect: 'root' | 'deleteIcon' | 'iconButton' | 'title';
+
+      MUIDataTableViewCol:
+          | 'root'
+          | 'checkbox'
+          | 'checkboxRoot'
+          | 'checked'
+          | 'formControl'
+          | 'formGroup'
+          | 'label'
+          | 'title';
+  }
 }
-
-const theme = createMuiTheme({
-  backgroundColor: "red"
-});
-
-export { theme };
